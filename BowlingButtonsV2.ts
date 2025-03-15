@@ -114,9 +114,9 @@ class BowlingButtons extends UIComponent<typeof BowlingButtons> {
   }
   private handleButtonPress(player: Player, event: CodeBlockEvent<[player: Player]>, buttonBinding: Binding<string>) {
     this.sendCodeBlockEvent(this.props.manager!, event, player);
-    buttonBinding.set("white");
+    buttonBinding.set("white", [player]);
     this.soundGizmo?.play();
-    this.async.setTimeout(()=>{buttonBinding.reset()},100);
+    this.async.setTimeout(()=>{buttonBinding.reset([player])},100);
   }
 }
 Component.register(BowlingButtons);
